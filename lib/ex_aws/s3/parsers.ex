@@ -74,10 +74,14 @@ else
       application list.
       """
 
-    def parse_list_objects(val), do: raise @error_message
-    def parse_initiate_multipart_upload(val), do: raise @error_message
-    def parse_upload_part_copy(val), do: raise @error_message
-    def parse_complete_multipart_upload(val), do: raise @error_message
-    def parse_list_parts(val), do: raise @error_message
+    def parse_list_objects({:ok, resp = %{body: _xml}}), do: raise @error_message
+    def parse_list_objects(val), do: val 
+    def parse_initiate_multipart_upload({:ok, resp = %{body: _xml}}), do: raise @error_message
+    def parse_initiate_multipart_upload(val), do: val
+    def parse_upload_part_copy(val), do: val
+    def parse_complete_multipart_upload(val), do: val
+    def parse_list_multipart_uploads({:ok, %{body: _xml}}), do: raise @error_message
+    def parse_list_multipart_uploads(val), do: val
+    def parse_list_parts(val), do: val
   end
 end
