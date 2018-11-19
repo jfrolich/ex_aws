@@ -49,7 +49,7 @@ defmodule ExAws do
     IO.inspect("Doing request")
     config = ExAws.Config.new(op.service, config_overrides)
     IO.inspect(config)
-    ExAws.Operation.perform(op, config)
+    ExAws.Operation.perform(op, config) |> IO.inspect()
   end
 
   @doc """
